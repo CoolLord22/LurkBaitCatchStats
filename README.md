@@ -45,11 +45,11 @@ Then build using your IDE with the Maven targets `clean install` or:
 
 To actually run the generated jar file, open a command prompt/PowerShell window in the directory containing the jar and run
 
-    $ java -jar MelonFishin-1.0-SNAPSHOT.jar
+    $ java -jar LurkBaitCatchStats-1.0-SNAPSHOT.jar
 
-The same line `java -jar %PATH_TO_JAR%/MelonFishin-1.0-SNAPSHOT.jar` can be added to a `run.bat` file so it is not necessary to open a command prompt window each time.
+The same line `java -jar %PATH_TO_JAR%/LurkBaitCatchStats-1.0-SNAPSHOT.jar` can be added to a `run.bat` file so it is not necessary to open a command prompt window each time.
 
-When attempting to run the program, ensure you are targetting the `MelonFishin-1.0-SNAPSHOT.jar`. The `original-MelonFishin-1.0-SNAPSHOT.jar` file does **NOT** contain the dependencies needed for the program to run.
+When attempting to run the program, ensure you are targetting the `LurkBaitCatchStats-1.0-SNAPSHOT.jar`. The `original-LurkBaitCatchStats-1.0-SNAPSHOT.jar` file does **NOT** contain the dependencies needed for the program to run.
 
 ## Contact Us
 If you have a problem please create a ticket and include the error (if there was one). Feel free to join the Discord Server linked above! I'm super active there and tend to respond faster on it.
