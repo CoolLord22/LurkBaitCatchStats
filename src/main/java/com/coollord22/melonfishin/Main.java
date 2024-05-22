@@ -214,13 +214,8 @@ public class Main {
 
         buttonDates.addActionListener(e -> setDates());
 
-        buttonTable.addActionListener(e -> {
-            File f = new File(textFileLoc.getText());
-            if(f.exists())
-                tabulateData();
-            else {
-                fileNotFound.setVisible(true);
-                buttonTable.setEnabled(false);
+        buttonTable.addActionListener(e -> tabulateData());
+
             }
         });
     }
