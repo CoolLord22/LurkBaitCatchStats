@@ -75,7 +75,7 @@ public class Main {
         JLabel textTo = new JLabel("to");
         JButton buttonDates = new JButton("Set Dates");
 
-        String path = "C:\\Users\\ash\\AppData\\LocalLow\\BLAMCAM Interactive\\LurkBait Twitch Fishing\\CatchData.txt";
+        String path = "C:\\Users\\ash\\AppData\\LocalLow\\BLAMCAM Interactive\\LurkBait Twitch Fishing\\";
         textFileLoc.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -90,8 +90,21 @@ public class Main {
             @Override
             public void changedUpdate(DocumentEvent e) {
                 File f = new File(textFileLoc.getText());
-                fileNotFound.setVisible(!f.exists());
-                buttonTable.setEnabled(f.exists());
+                if(f.exists() && f.isDirectory()) {
+                    File catches = new File(textFileLoc.getText() + File.separator + "CatchData.txt");
+                    File customCatches = new File(textFileLoc.getText() + File.separator + "CustomCatches.txt");
+                    if(!catches.exists() || !customCatches.exists()) {
+                        fileNotFound.setText("Warning, CatchData/CustomCatches files not found in directory!");
+                        fileNotFound.setVisible(true);
+                        buttonTable.setEnabled(false);
+                    } else {
+                        fileNotFound.setVisible(false);
+                    }
+                } else {
+                    fileNotFound.setText("Warning, current file directory not found!");
+                    fileNotFound.setVisible(true);
+                    buttonTable.setEnabled(false);
+                }
             }
         });
         textFileLoc.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
