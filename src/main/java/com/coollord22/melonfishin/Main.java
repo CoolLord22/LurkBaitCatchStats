@@ -33,8 +33,6 @@ public class Main {
     public static JTextField textStartDate;
     public static JTextField textEndDate;
 
-    private static String[] rewards = {"stinky ticket", "lucky ticket"};
-
     public static void main(String[] args) {
         try {
             UIManager.put("control", new Color(124, 113, 241));
