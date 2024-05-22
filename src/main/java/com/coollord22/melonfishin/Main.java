@@ -217,6 +217,13 @@ public class Main {
 
         buttonTable.addActionListener(e -> tabulateData());
 
+        customCatchesSelector.addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) {
+                trackedCatchTypes.clear();
+                for(Object element : ((JList<?>) e.getSource()).getSelectedValuesList()) {
+                    trackedCatchTypes.add((String) element);
+                }
+                buttonTable.setEnabled(!trackedCatchTypes.isEmpty());
             }
         });
     }
