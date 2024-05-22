@@ -24,7 +24,7 @@ import java.util.List;
 public class Main {
     public static Date startDate = null;
     public static Date endDate = null;
-    public static HashSet<String> customCatches;
+    public static List<String> customCatches;
     public static List<String> trackedCatchTypes;
     public static HashMap<String, HashMap<String, Integer>> dataMap;
     public static SimpleDateFormat df;
@@ -36,7 +36,7 @@ public class Main {
 
     public static void main(String[] args) {
         setUITheme();
-        customCatches = new HashSet<>();
+        customCatches = new ArrayList<>();
         trackedCatchTypes = new ArrayList<>();
         textFileLoc = new JTextField();
         textStartDate = new JTextField(15);
