@@ -24,11 +24,9 @@ import java.util.List;
 public class Main {
     public static Date startDate = null;
     public static Date endDate = null;
-    public static HashMap<String, int[]> dataMap = new HashMap<>();
-    public static SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-
+    public static HashMap<String, HashMap<String, Integer>> dataMap;
+    public static SimpleDateFormat df;
     public static JLabel fileNotFound;
-
     public static JTextField textFileLoc;
     public static JTextField textStartDate;
     public static JTextField textEndDate;
