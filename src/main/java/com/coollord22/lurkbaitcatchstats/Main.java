@@ -16,6 +16,7 @@ import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
 import java.time.ZoneId;
 import java.util.*;
@@ -247,7 +248,11 @@ public class Main {
         });
         textFileLoc.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
         textFileLoc.setColumns(55);
-        textFileLoc.setText(System.getProperty("user.dir"));
+        try {
+            textFileLoc.setText(new File(Main.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getPath());
+        } catch (URISyntaxException e) {
+            textFileLoc.setText(System.getProperty("user.dir"));
+        }
     }
 
     private static void populateJList() {
