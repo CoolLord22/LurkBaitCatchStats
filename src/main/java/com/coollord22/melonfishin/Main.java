@@ -321,6 +321,13 @@ public class Main {
         for(String catchType : trackedCatchTypes) {
             model.addColumn(catchType);
         }
+        for (Map.Entry<String, HashMap<String, Integer>> entry : dataMap.entrySet()) {
+            List<Object> catchValues = new ArrayList<>();
+            catchValues.add(entry.getKey());
+            for(String catchType : trackedCatchTypes) {
+                catchValues.add(entry.getValue().getOrDefault(catchType, 0));
+            }
+            model.addRow(catchValues.toArray());
         }
         JTable table = new JTable(model);
         TableRowSorter<TableModel> sorter = new TableRowSorter<>(table.getModel());
