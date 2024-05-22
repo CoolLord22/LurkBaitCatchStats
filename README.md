@@ -9,7 +9,7 @@ Program Features (See images below):
 - More to come!
 
 ## Program Use Scenario
-The primary reason I coded this was to allow streamers to create rewards for users based on how much they fished! For example, I set up a custom catch (a Lucky Ticket). I wanted to give the viewer with the MOST lucky tickets at the end of each month a free subscription. But how do you track such stats with just LurkBait and Twitch bots??? Enter LurkBaitCatchStats!
+The primary reason I coded this was to allow streamers to create rewards for users based on how much they've fished! For example, I set up a custom catch (a Lucky Ticket). I wanted to give the viewer with the MOST lucky tickets at the end of each month a free subscription. But how do you track such stats with just LurkBait and Twitch bots??? Enter LurkBaitCatchStats!
 
 ## Program Images
 
