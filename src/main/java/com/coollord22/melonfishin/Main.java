@@ -2,6 +2,7 @@ package com.coollord22.melonfishin;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.stream.JsonReader;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -17,9 +18,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.ZoneId;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.List;
 
 public class Main {
     public static Date startDate = null;
