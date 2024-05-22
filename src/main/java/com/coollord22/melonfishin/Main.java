@@ -282,22 +282,19 @@ public class Main {
                 if(!data.date.after(startDate) || !data.date.before(endDate))
                     continue;
             }
-            if(data.name.equalsIgnoreCase("stinky ticket")) {
+            if(trackedCatchTypes.contains(data.name)) {
+                HashMap<String, Integer> userCatchData = new HashMap<>();
                 if(dataMap.containsKey(data.username)) {
-                    dataMap.put(data.username, new int[] {dataMap.get(data.username)[0] + 1, dataMap.get(data.username)[1]});
+                    userCatchData = dataMap.get(data.username);
+                    if(userCatchData.containsKey(data.name))
+                        userCatchData.put(data.name, userCatchData.get(data.name) + 1);
+                    else userCatchData.put(data.name, 1);
                 } else {
-                    dataMap.put(data.username, new int[] {1, 0});
+                    userCatchData.put(data.name, 1);
                 }
-            }
-            if(data.name.equalsIgnoreCase("lucky ticket")) {
-                if(dataMap.containsKey(data.username)) {
-                    dataMap.put(data.username, new int[] {dataMap.get(data.username)[0], dataMap.get(data.username)[1] + 1});
-                } else {
-                    dataMap.put(data.username, new int[] {0, 1});
-                }
+                dataMap.put(data.username, userCatchData);
             }
         }
-
         outputData();
     }
 
