@@ -1,4 +1,4 @@
-package com.coollord22.melonfishin;
+package com.coollord22.lurkbaitcatchstats;
 
 import com.github.lgooddatepicker.components.DatePicker;
 
