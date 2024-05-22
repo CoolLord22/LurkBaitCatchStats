@@ -306,14 +306,16 @@ public class Main {
     }
 
     private static void outputData() {
-        DefaultTableModel model = new DefaultTableModel(new Object[] {"Username", "Stinky Tickets", "Lucky Tickets"}, 0){
+        DefaultTableModel model = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
-        for (Map.Entry<String, int[]> entry : dataMap.entrySet()) {
-            model.addRow(new Object[] { entry.getKey(), entry.getValue()[0], entry.getValue()[1]});
+        model.addColumn("Username");
+        for(String catchType : trackedCatchTypes) {
+            model.addColumn(catchType);
+        }
         }
         JTable table = new JTable(model);
         TableRowSorter<TableModel> sorter = new TableRowSorter<>(table.getModel());
