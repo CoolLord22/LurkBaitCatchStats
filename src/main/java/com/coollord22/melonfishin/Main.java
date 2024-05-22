@@ -24,20 +24,26 @@ import java.util.List;
 public class Main {
     public static Date startDate = null;
     public static Date endDate = null;
+    public static HashSet<String> customCatches;
+    public static List<String> trackedCatchTypes;
     public static HashMap<String, HashMap<String, Integer>> dataMap;
     public static SimpleDateFormat df;
     public static JLabel fileNotFound;
     public static JTextField textFileLoc;
     public static JTextField textStartDate;
     public static JTextField textEndDate;
+    public static DefaultListModel<String> customCatchesList;
 
     public static void main(String[] args) {
         setUITheme();
+        customCatches = new HashSet<>();
+        trackedCatchTypes = new ArrayList<>();
         textFileLoc = new JTextField();
         textStartDate = new JTextField(15);
         textEndDate = new JTextField(15);
         dataMap = new HashMap<>();
         df = new SimpleDateFormat("MM/dd/yyyy");
+        customCatchesList = new DefaultListModel<>();
 
         fileNotFound = new JLabel("Warning, current file directory not found!", SwingConstants.CENTER);
         fileNotFound.setForeground(new Color(50, 40, 115));
@@ -64,7 +70,18 @@ public class Main {
     private static void loadMainGUI() {
         JButton buttonTable = new JButton("Make Table");
         JButton buttonBrowse = new JButton("Browse...");
-
+        JList<String> customCatchesSelector = new JList<>(customCatchesList);
+        customCatchesSelector.setSelectionModel(new DefaultListSelectionModel() {
+            @Override
+            public void setSelectionInterval(int index0, int index1) {
+                if(super.isSelectedIndex(index0)) {
+                    super.removeSelectionInterval(index0, index1);
+                }
+                else {
+                    super.addSelectionInterval(index0, index1);
+                }
+            }
+        });
         textStartDate.setText("Start Date");
         textEndDate.setText("End Date");
         textStartDate.setEditable(false);
@@ -89,6 +106,8 @@ public class Main {
 
             @Override
             public void changedUpdate(DocumentEvent e) {
+                customCatchesList.clear();
+                trackedCatchTypes.clear();
                 File f = new File(textFileLoc.getText());
                 if(f.exists() && f.isDirectory()) {
                     File catches = new File(textFileLoc.getText() + File.separator + "CatchData.txt");
