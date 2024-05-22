@@ -180,6 +180,8 @@ public class Main {
 
         buttonBrowse.addActionListener(e -> {
             JFileChooser fileGUI = new JFileChooser();
+            fileGUI.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            fileGUI.setAcceptAllFileFilterUsed(false);
             fileGUI.showSaveDialog(null);
             try {
                 textFileLoc.setText(fileGUI.getSelectedFile().getAbsolutePath());
