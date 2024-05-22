@@ -29,12 +29,18 @@ The primary reason I coded this was to allow streamers to create rewards for use
 ![multitable date range](https://github.com/CoolLord22/LurkBaitCatchStats/assets/16751239/a4260985-14d3-4f86-a5c0-e54003d865e7)
 
 
-## Running the program
+## Running the Program
 The easiest way to run the program is to first download the necessary `.jar` and `run.bat` files from the [Releases](https://github.com/CoolLord22/LurkBaitCatchStats/releases) tab.
 
-Extract both of these files into any directory of your choice. 
+Extract both of these files into any directory of your choice.
 
-Double click `run.bat` to start the program. View images attached below for further usage details!
+Double click `run.bat` to start the program. Use the file browser to navigate to the directory where `CatchData.txt` and `CustomCatches.txt` are stored. See images attached above for further usage details!
+
+## Advanced Setup Instructions
+It is quite annoying and cumbersome to have to browse for the file directory each time. A simple solution exists for this.
+1. Download both `.jar` and `run.bat` files from the [Releases](https://github.com/CoolLord22/LurkBaitCatchStats/releases) tab.
+2. Move `LurkBaitCatchStats-VERSION.jar` into the AppData folder that contains your LurkBait data (by default, `%userprofile%\AppData\LocalLow\BLAMCAM Interactive\LurkBait Twitch Fishing\`)
+3. Double click `run.bat`. This file can be anywhere you want! The program will start directly from the LBTF directory, so you don't have to use the file browser at all!
 
 ## Building the jar with Maven
 These instructions assume you have already forked and/or cloned the project and have on your computer.
