@@ -195,6 +195,11 @@ public class Main {
         c.gridwidth = 5;
         mainGUI.add(fileNotFound, c);
 
+        // Row 4
+        c.gridx = 0;
+        c.gridy = 4;
+        mainGUI.add(customCatchesSelector, c);
+
         mainGUI.setVisible(true);
 
         buttonBrowse.addActionListener(e -> {
