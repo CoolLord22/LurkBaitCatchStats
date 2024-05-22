@@ -17,7 +17,8 @@ public class DateGUI extends JDialog {
         setTitle("LurkBait Catch Date Range");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new FlowLayout());
-        setSize(new Dimension(525, 250));
+        setPreferredSize(new Dimension(525, 250));
+        pack();
         setLocationRelativeTo(null);
         init();
     }
@@ -35,6 +36,12 @@ public class DateGUI extends JDialog {
         LocalDate today = LocalDate.now();
         datePicker1.setDate(today.with(TemporalAdjusters.firstDayOfMonth()));
         datePicker2.setDate(today.with(TemporalAdjusters.lastDayOfMonth()));
+
+        add(datePicker1);
+        add(textTo);
+        add(datePicker2);
+        add(cmd);
+        add(textError);
 
         datePicker1.addDateChangeListener(e -> {
             textError.setVisible(false);
@@ -69,12 +76,6 @@ public class DateGUI extends JDialog {
             endDate = datePicker2.getDate();
             dispose();
         });
-
-        add(datePicker1);
-        add(textTo);
-        add(datePicker2);
-        add(cmd);
-        add(textError);
 
         addWindowListener(new WindowAdapter() {
             @Override
