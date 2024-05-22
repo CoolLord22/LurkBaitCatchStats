@@ -2,7 +2,7 @@ package com.coollord22.melonfishin;
 
 import java.util.Date;
 
-public class Catch {
+public class CatchData {
     public String username;
     public String name;
     public String weight;

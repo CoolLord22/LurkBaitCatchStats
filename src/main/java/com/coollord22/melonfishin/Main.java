@@ -202,15 +202,16 @@ public class Main {
     private static void tabulateData() {
         Gson gson = new GsonBuilder().setDateFormat("dd/MM/yyyy HH:mm:ss").create();
         FileReader file;
-        Catch[] features = new Catch[0];
+        CatchData[] features = new CatchData[0];
         try {
             file = new FileReader(textFileLoc.getText());
             features = gson.fromJson(file, Catch[].class);
+            features = gson.fromJson(file, CatchData[].class);
             file.close();
         } catch (IOException ignored) {}
 
         dataMap = new HashMap<>();
-        for(Catch data : features) {
+        for(CatchData data : features) {
             if(startDate != null && endDate != null) {
                 if(!data.date.after(startDate) || !data.date.before(endDate))
                     continue;
