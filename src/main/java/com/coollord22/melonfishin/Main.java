@@ -271,8 +271,7 @@ public class Main {
         FileReader file;
         CatchData[] features = new CatchData[0];
         try {
-            file = new FileReader(textFileLoc.getText());
-            features = gson.fromJson(file, Catch[].class);
+            file = new FileReader(textFileLoc.getText() + File.separator + "CatchData.txt");
             features = gson.fromJson(file, CatchData[].class);
             file.close();
         } catch (IOException ignored) {}
