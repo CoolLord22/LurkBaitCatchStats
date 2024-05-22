@@ -69,6 +69,8 @@ public class Main {
         JButton buttonBrowse = new JButton("Browse...");
         JButton buttonDates = new JButton("Set Dates");
         JLabel textTo = new JLabel("to");
+        JLabel textDropdownList = new JLabel("Select CustomCatch Types to add to Table:");
+        textDropdownList.setFont(new Font(Font.MONOSPACED, Font.BOLD, 13));
 
         JList<String> customCatchesSelector = new JList<>(customCatchesList);
         customCatchesSelector.setSelectionModel(new DefaultListSelectionModel() {
@@ -82,6 +84,7 @@ public class Main {
                 }
             }
         });
+        JScrollPane listPane = new JScrollPane(customCatchesSelector);
 
         // Creating the main GUI
         JDialog mainGUI = new JDialog();
@@ -152,9 +155,16 @@ public class Main {
         // Row 4
         c.gridx = 0;
         c.gridy = 4;
-        mainGUI.add(customCatchesSelector, c);
         c.insets = new Insets(10,3,3,3);
+        mainGUI.add(textDropdownList, c);
 
+        // Row 5
+        c.gridx = 0;
+        c.gridy = 5;
+        c.gridwidth = 5;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.insets = new Insets(0,0,0,0);
+        mainGUI.add(listPane, c);
 
         // Making GUI Visible
         mainGUI.pack();
