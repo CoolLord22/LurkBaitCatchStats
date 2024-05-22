@@ -32,6 +32,22 @@ public class Main {
     public static JTextField textEndDate;
 
     public static void main(String[] args) {
+        setUITheme();
+        textFileLoc = new JTextField();
+        textStartDate = new JTextField(15);
+        textEndDate = new JTextField(15);
+        dataMap = new HashMap<>();
+        df = new SimpleDateFormat("MM/dd/yyyy");
+
+        fileNotFound = new JLabel("Warning, current file directory not found!", SwingConstants.CENTER);
+        fileNotFound.setForeground(new Color(50, 40, 115));
+        fileNotFound.setVisible(false);
+        fileNotFound.setFont(new Font(fileNotFound.getFont().getFontName(), Font.BOLD, 14));
+
+        loadMainGUI();
+    }
+
+    private static void setUITheme() {
         try {
             UIManager.put("control", new Color(124, 113, 241));
             UIManager.put("info", new Color(164, 131, 246));
@@ -43,16 +59,6 @@ public class Main {
             UIManager.put("text", new Color(44, 12, 108));
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
         } catch (ClassNotFoundException | UnsupportedLookAndFeelException | IllegalAccessException |  InstantiationException ignored) {}
-        textFileLoc = new JTextField();
-        textStartDate = new JTextField(15);
-        textEndDate = new JTextField(15);
-
-        fileNotFound = new JLabel("Warning, current file path not found!", SwingConstants.CENTER);
-        fileNotFound.setForeground(new Color(50, 40, 115));
-        fileNotFound.setVisible(false);
-        fileNotFound.setFont(new Font(fileNotFound.getFont().getFontName(), Font.BOLD, 14));
-
-        loadMainGUI();
     }
 
     private static void loadMainGUI() {
