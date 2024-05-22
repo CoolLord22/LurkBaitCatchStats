@@ -45,11 +45,6 @@ public class Main {
         df = new SimpleDateFormat("MM/dd/yyyy");
         customCatchesList = new DefaultListModel<>();
 
-        fileNotFound = new JLabel("Warning, current file directory not found!", SwingConstants.CENTER);
-        fileNotFound.setForeground(new Color(50, 40, 115));
-        fileNotFound.setVisible(false);
-        fileNotFound.setFont(new Font(fileNotFound.getFont().getFontName(), Font.BOLD, 14));
-
         loadMainGUI();
     }
 
@@ -82,54 +77,10 @@ public class Main {
                 }
             }
         });
-        textStartDate.setText("Start Date");
-        textEndDate.setText("End Date");
-        textStartDate.setEditable(false);
-        textEndDate.setEditable(false);
-        textStartDate.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
-        textEndDate.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
 
         JLabel textTo = new JLabel("to");
         JButton buttonDates = new JButton("Set Dates");
 
-        String path = "C:\\Users\\ash\\AppData\\LocalLow\\BLAMCAM Interactive\\LurkBait Twitch Fishing\\";
-        textFileLoc.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                changedUpdate(e);
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                changedUpdate(e);
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                customCatchesList.clear();
-                trackedCatchTypes.clear();
-                File f = new File(textFileLoc.getText());
-                if(f.exists() && f.isDirectory()) {
-                    File catches = new File(textFileLoc.getText() + File.separator + "CatchData.txt");
-                    File customCatches = new File(textFileLoc.getText() + File.separator + "CustomCatches.txt");
-                    if(!catches.exists() || !customCatches.exists()) {
-                        fileNotFound.setText("Warning, CatchData/CustomCatches files not found in directory!");
-                        fileNotFound.setVisible(true);
-                        buttonTable.setEnabled(false);
-                    } else {
-                        fileNotFound.setVisible(false);
-                        populateJList();
-                    }
-                } else {
-                    fileNotFound.setText("Warning, current file directory not found!");
-                    fileNotFound.setVisible(true);
-                    buttonTable.setEnabled(false);
-                }
-            }
-        });
-        textFileLoc.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
-        textFileLoc.setColumns(55);
-        textFileLoc.setText(path);
 
         JDialog mainGUI = new JDialog();
         mainGUI.setTitle("LurkBait Twitch Fishing Data Collector");
@@ -226,6 +177,58 @@ public class Main {
                 buttonTable.setEnabled(!trackedCatchTypes.isEmpty());
             }
         });
+    private static void createStaticUIElements() {
+        buttonTable = new JButton("Make Table");
+
+        fileNotFound = new JLabel("Warning, current file directory not found!", SwingConstants.CENTER);
+        fileNotFound.setForeground(new Color(50, 40, 115));
+        fileNotFound.setVisible(false);
+        fileNotFound.setFont(new Font(fileNotFound.getFont().getFontName(), Font.BOLD, 14));
+
+        textStartDate.setText("Start Date");
+        textEndDate.setText("End Date");
+        textStartDate.setEditable(false);
+        textEndDate.setEditable(false);
+        textStartDate.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
+        textEndDate.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
+
+        textFileLoc.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                changedUpdate(e);
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                changedUpdate(e);
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                customCatchesList.clear();
+                trackedCatchTypes.clear();
+                File f = new File(textFileLoc.getText());
+                if(f.exists() && f.isDirectory()) {
+                    File catches = new File(textFileLoc.getText() + File.separator + "CatchData.txt");
+                    File customCatches = new File(textFileLoc.getText() + File.separator + "CustomCatches.txt");
+                    if(!catches.exists() || !customCatches.exists()) {
+                        fileNotFound.setText("Warning, CatchData/CustomCatches files not found in directory!");
+                        fileNotFound.setVisible(true);
+                        buttonTable.setEnabled(false);
+                    } else {
+                        fileNotFound.setVisible(false);
+                        populateJList();
+                    }
+                } else {
+                    fileNotFound.setText("Warning, current file directory not found!");
+                    fileNotFound.setVisible(true);
+                    buttonTable.setEnabled(false);
+                }
+            }
+        });
+        textFileLoc.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
+        textFileLoc.setColumns(55);
+        textFileLoc.setText("C:\\Users\\ash\\AppData\\LocalLow\\BLAMCAM Interactive\\LurkBait Twitch Fishing\\");
     }
 
     private static void populateJList() {
