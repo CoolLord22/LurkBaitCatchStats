@@ -32,17 +32,15 @@ The primary reason I coded this was to allow streamers to create rewards for use
 ## Running the Program
 The easiest way to run the program is to first download the necessary `.jar` and `run.bat` files from the [Releases](https://github.com/CoolLord22/LurkBaitCatchStats/releases) tab.
 
-Extract both of these files into any directory of your choice. 
+Extract both of these files into any directory of your choice.
 
-Double click `run.bat` to start the program. See images attached above for further usage details!
+Double click `run.bat` to start the program. Use the file browser to navigate to the directory where `CatchData.txt` and `CustomCatches.txt` are stored. See images attached above for further usage details!
 
 ## Advanced Setup Instructions
 It is quite annoying and cumbersome to have to browse for the file directory each time. A simple solution exists for this.
-
-1. Move both `LurkBaitCatchStats-1.0-SNAPSHOT.jar` AND `run.bat` into the AppData folder that contains the LurkBait data (by default, `%userprofile%\AppData\LocalLow\BLAMCAM Interactive\LurkBait Twitch Fishing\`)
-2. Right click `run.bat` and select `Send To > Desktop (create shortcut)`
-3. You can now move that desktop shortcut `run.bat` file wherever you want to!
-4. Double click `run.bat - Shortcut`. The program will start the directly from the LBTF directory so you don't have to use the file browser at all!
+1. Download both `.jar` and `run.bat` files from the [Releases](https://github.com/CoolLord22/LurkBaitCatchStats/releases) tab.
+2. Move `LurkBaitCatchStats-VERSION.jar` into the AppData folder that contains your LurkBait data (by default, `%userprofile%\AppData\LocalLow\BLAMCAM Interactive\LurkBait Twitch Fishing\`)
+3. Double click `run.bat`. This file can be anywhere you want! The program will start directly from the LBTF directory, so you don't have to use the file browser at all!
 
 ## Building the jar with Maven
 These instructions assume you have already forked and/or cloned the project and have on your computer.
