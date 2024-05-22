@@ -247,7 +247,7 @@ public class Main {
         });
         textFileLoc.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
         textFileLoc.setColumns(55);
-        textFileLoc.setText("C:\\Users\\ash\\AppData\\LocalLow\\BLAMCAM Interactive\\LurkBait Twitch Fishing\\");
+        textFileLoc.setText(System.getProperty("user.dir"));
     }
 
     private static void populateJList() {
