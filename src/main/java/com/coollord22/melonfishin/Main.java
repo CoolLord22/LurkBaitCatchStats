@@ -83,10 +83,10 @@ public class Main {
             }
         });
 
+        // Creating the main GUI
         JDialog mainGUI = new JDialog();
         mainGUI.setTitle("LurkBait Twitch Fishing Data Collector");
-        mainGUI.setSize(750, 250);
-        mainGUI.setLocationRelativeTo(null);
+        mainGUI.setPreferredSize(new Dimension(550, 375));
         mainGUI.setLayout(new GridBagLayout());
         mainGUI.addWindowListener(new WindowAdapter() {
             @Override
@@ -101,25 +101,26 @@ public class Main {
         c.gridwidth = 4;
         c.gridy = 0;
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.insets = new Insets(3,3,3,3);
+        c.insets = new Insets(3,0,3,3);
         mainGUI.add(textFileLoc, c);
 
         c.gridx = 4;
         c.gridy = 0;
         c.gridwidth = 1;
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.insets = new Insets(3,3,3,3);
+        c.insets = new Insets(3,3,3,0);
         mainGUI.add(buttonBrowse, c);
 
         // Row 2
         c.gridx = 0;
         c.gridy = 1;
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.insets = new Insets(3,3,3,3);
+        c.insets = new Insets(3,0,3,3);
         mainGUI.add(textStartDate, c);
 
         c.gridx = 1;
         c.gridy = 1;
+        c.insets = new Insets(0,0,0,0);
         mainGUI.add(textTo, c);
 
         c.gridx = 2;
@@ -137,7 +138,7 @@ public class Main {
         c.gridx = 4;
         c.gridy = 1;
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.insets = new Insets(3,3,3,3);
+        c.insets = new Insets(3,3,3,0);
         mainGUI.add(buttonTable, c);
 
         // Row 3
@@ -152,7 +153,12 @@ public class Main {
         c.gridx = 0;
         c.gridy = 4;
         mainGUI.add(customCatchesSelector, c);
+        c.insets = new Insets(10,3,3,3);
 
+
+        // Making GUI Visible
+        mainGUI.pack();
+        mainGUI.setLocationRelativeTo(null);
         mainGUI.setVisible(true);
 
         buttonBrowse.addActionListener(e -> {
