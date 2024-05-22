@@ -118,6 +118,7 @@ public class Main {
                         buttonTable.setEnabled(false);
                     } else {
                         fileNotFound.setVisible(false);
+                        populateJList();
                     }
                 } else {
                     fileNotFound.setText("Warning, current file directory not found!");
@@ -218,6 +219,34 @@ public class Main {
 
             }
         });
+    }
+
+    private static void populateJList() {
+        FileReader file;
+        try {
+            file = new FileReader(textFileLoc.getText() + File.separator + "CustomCatches.txt");
+            JsonReader jsonReader = new JsonReader(file);
+            jsonReader.beginObject();
+            while (jsonReader.hasNext()) {
+                jsonReader.skipValue(); // skip over the name
+                jsonReader.beginObject();
+                while (jsonReader.hasNext()) {
+                    String name = jsonReader.nextName();
+                    if(name.equalsIgnoreCase("FullName"))
+                        customCatches.add(jsonReader.nextString());
+                    else jsonReader.skipValue();
+                }
+                jsonReader.endObject();
+            }
+            jsonReader.endObject();
+            jsonReader.close();
+
+        } catch (IOException ignored) {}
+
+        if(customCatches != null && !customCatches.isEmpty()) {
+            for(String catchType : customCatches)
+                customCatchesList.addElement(catchType);
+        }
     }
 
     private static void setDates() {
