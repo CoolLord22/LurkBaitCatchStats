@@ -311,6 +311,11 @@ public class Main {
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
+
+            @Override
+            public Class<?> getColumnClass(int column) {
+                return column == 0 ? String.class : Integer.class;
+            }
         };
         model.addColumn("Username");
         for(String catchType : trackedCatchTypes) {
