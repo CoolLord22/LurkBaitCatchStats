@@ -32,6 +32,7 @@ public class Main {
     public static JTextField textFileLoc;
     public static JTextField textStartDate;
     public static JTextField textEndDate;
+    public static JButton buttonTable;
     public static DefaultListModel<String> customCatchesList;
 
     public static void main(String[] args) {
@@ -63,8 +64,12 @@ public class Main {
     }
 
     private static void loadMainGUI() {
-        JButton buttonTable = new JButton("Make Table");
+        createStaticUIElements();
+        // Other UI elements
         JButton buttonBrowse = new JButton("Browse...");
+        JButton buttonDates = new JButton("Set Dates");
+        JLabel textTo = new JLabel("to");
+
         JList<String> customCatchesSelector = new JList<>(customCatchesList);
         customCatchesSelector.setSelectionModel(new DefaultListSelectionModel() {
             @Override
@@ -77,10 +82,6 @@ public class Main {
                 }
             }
         });
-
-        JLabel textTo = new JLabel("to");
-        JButton buttonDates = new JButton("Set Dates");
-
 
         JDialog mainGUI = new JDialog();
         mainGUI.setTitle("LurkBait Twitch Fishing Data Collector");
@@ -164,10 +165,6 @@ public class Main {
             } catch (NullPointerException ignored) {}
         });
 
-        buttonDates.addActionListener(e -> setDates());
-
-        buttonTable.addActionListener(e -> tabulateData());
-
         customCatchesSelector.addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()) {
                 trackedCatchTypes.clear();
@@ -177,6 +174,12 @@ public class Main {
                 buttonTable.setEnabled(!trackedCatchTypes.isEmpty());
             }
         });
+
+        buttonDates.addActionListener(e -> setDates());
+
+        buttonTable.addActionListener(e -> tabulateData());
+    }
+
     private static void createStaticUIElements() {
         buttonTable = new JButton("Make Table");
 
